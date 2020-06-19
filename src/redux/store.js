@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
+import { persistStore } from 'redux-persist';
 import logger from 'redux-logger';
 
 import rootReducer from './root-reducer';
@@ -6,4 +7,5 @@ import rootReducer from './root-reducer';
 const middleware = [logger];
 //a store is used to store our whole application state in an object tree.
 const store = createStore(rootReducer, applyMiddleware(...middleware));
-export default store;
+const persistor = persistStore(store);
+export {store, persistor};
